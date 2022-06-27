@@ -4,14 +4,23 @@ require "sinatra/reloader" if development?
 
 set :bind, '0.0.0.0'  # bind to all interfaces
 
+get '/' do
+  "Hello World"
+end
+
 get "/cards" do
   @cards = ["Dark-Magician", "Exodia", "Trap-Hole", "Blue-Eyes-White-Dragon-Holofoil"]
 
-  erb :index
+  erb :cards
 end
 
-get "/cards/:card_name" do
-  @card_name = params[:card_name]
+get "/cards-display/:favorite_card" do 
 
-  erb :show
+  @card = params["favorite_card"]
+
+  erb :display
 end
+
+
+
+
